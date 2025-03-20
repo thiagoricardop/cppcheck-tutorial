@@ -1,0 +1,35 @@
+contacts.c:1:0: information: Include file: <stdio.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <stdio.h>
+^
+contacts.c:2:0: information: Include file: <stdlib.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <stdlib.h>
+^
+contacts.c:3:0: information: Include file: <string.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <string.h>
+^
+contacts.c:18:5: warning: scanf() without field width limits can crash with huge input data. [invalidscanf]
+    scanf("%s", contacts[*count].name); // Possible buffer overflow
+    ^
+contacts.c:20:5: warning: scanf() without field width limits can crash with huge input data. [invalidscanf]
+    scanf("%s", contacts[*count].phone); // Possible buffer overflow
+    ^
+contacts.c:13:9: warning: Uninitialized variable: *count [uninitvar]
+    if (*count >= 5) {
+        ^
+contacts.c:41:39: note: Calling function 'add_contact', 2nd argument '&count' value is <Uninit>
+                add_contact(contacts, &count);
+                                      ^
+contacts.c:13:9: note: Uninitialized variable: *count
+    if (*count >= 5) {
+        ^
+contacts.c:13:10: error: Using argument count that points at uninitialized variable count [ctuuninitvar]
+    if (*count >= 5) {
+         ^
+contacts.c:41:28: note: Calling function add_contact, 2nd argument is uninitialized
+                add_contact(contacts, &count);
+                           ^
+contacts.c:13:10: note: Using argument count
+    if (*count >= 5) {
+         ^
+nofile:0:0: information: Active checkers: 108/836 (use --checkers-report=<filename> to see details) [checkersReport]
+
